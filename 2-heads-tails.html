@@ -1,0 +1,50 @@
+<!--
+Make a coin flip application. Modify the code below so that when the "Flip the coin!" button is clicked, it the coin display with randomly be heads vs tails with 50% chance (you may use `Math.random()`).
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Babel Quickstart</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel" data-presets="react">
+    class HeadsTails extends React.Component {
+
+      constructor(){
+        super();
+        this.state = {
+        }
+        this.state.imageUrl = 'images/quarter-front.png';
+      }
+
+      flip(){
+        var image = Math.random() > .5 ? 'images/quarter-front.png' : 'images/quarter-back.png';
+        console.log(image);
+        this.setState({
+          imageUrl: image
+        });
+
+      }
+
+      render() {
+        // let imageUrl = this.state.image;
+        return (
+          <div>
+            <h1>Heads or Tails?</h1>
+            <img onClick={() => this.flip()} src={this.state.imageUrl}/>
+            <button onClick={() => this.flip()}>Flip the coin!</button>
+          </div>
+        );
+      }
+    }
+
+    ReactDOM.render(<HeadsTails/>, document.getElementById('root'));
+
+    </script>
+  </body>
+</html>
